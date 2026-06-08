@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using bank_project_csharp.Entities.Exceptions;
+using System.Globalization;
 
 namespace bank_project_csharp.Entities
 {
@@ -28,10 +30,19 @@ namespace bank_project_csharp.Entities
         {
             if(amount < 0.0)
             {
-
+                throw new AccountExpection("The deposit amount cannot be less than or equal to zero.");
+            }
+            else
+            {
+                Balance += amount;
             }
         }
 
-
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("New balance: " + Balance.ToString("F2",CultureInfo.InvariantCulture));
+            return sb.ToString();
+        }
     }
 }
