@@ -20,8 +20,16 @@ namespace bank_project_csharp.Entities
         {
             Number = number;
             Holder = holder;
-            Balance = balance;
+            deposit(balance);
             WithDrawLimit = withDrawLimit;
+        }
+
+        public void deposit(double amount)
+        {
+            if(amount < 0.0)
+            {
+
+            }
         }
 
 
