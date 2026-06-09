@@ -23,7 +23,19 @@ namespace bank_project_csharp.Entities
             Number = number;
             Holder = holder;
             deposit(balance);
-            WithDrawLimit = withDrawLimit;
+            WdLimit(withDrawLimit);
+        }
+
+        public void WdLimit(double withDrawLimit)
+        {
+            if (withDrawLimit < 0.0)
+            {
+                throw new AccountExpection("The WithDrawLimit cannot be less than zero.");
+            }
+            else
+            {
+                WithDrawLimit = withDrawLimit; 
+            }
         }
 
         public void deposit(double amount)
