@@ -38,6 +38,22 @@ namespace bank_project_csharp.Entities
             }
         }
 
+        public void withdraw(double amount)
+        {
+            if (amount > WithDrawLimit || amount < 0.0)
+            {
+                throw new AccountExpection("The amount exceeds withdraw limit or minus 0");
+            }
+            else if (amount > Balance)
+            {
+                throw new AccountExpection("Not enough balance");
+            }
+            else
+            {
+                Balance -= amount;
+            }
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
